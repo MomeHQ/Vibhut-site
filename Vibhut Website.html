@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibhut — Carry Your Traditions Forward</title>
+  <meta name="description" content="Vibhut helps busy families celebrate Hindu festivals with reminders, stories, mantras, and traditions. Powered by 100 years of Gita Press wisdom.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --black-light: #141414;
+      --black-lighter: #1E1E1E;
+      --emerald: #1B5E3C;
+      --emerald-light: #2E8B57;
+      --emerald-glow: rgba(80, 200, 120, 0.2);
+      --gold: #C9A227;
+      --gold-bright: #FFD700;
+      --cream: #FBF7F0;
+      --text-light: #F5F5F5;
+      --text-muted: #A0A0A0;
+      
+      --gradient-gold: linear-gradient(135deg, #B8860B 0%, #FFD700 50%, #B8860B 100%);
+      --gradient-emerald: linear-gradient(135deg, #0D3D23 0%, #1B5E3C 100%);
+      
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --section-padding: clamp(4rem, 10vw, 8rem);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--black); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
+
+    /* Custom Diya Background Pattern */
+    .pattern-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10c2 0 4 2 4 6 0 5-4 10-4 10s-4-5-4-10c0-4 2-6 4-6zm-15 30c0-8 15-8 15 0 0 5-7 10-7 10s-8-5-8-10z' fill='%23C9A227'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
+    .nav-logo img { height: 40px; }
+    .nav-logo span { font-family: var(--font-display); font-weight: 700; letter-spacing: 2px; background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 120px 2rem 60px; position: relative; z-index: 1;
+      background: radial-gradient(circle at 50% 30%, var(--emerald-glow) 0%, transparent 70%);
+    }
+
+    .hero-logo { width: 180px; margin-bottom: 2rem; animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 8vw, 4.5rem); max-width: 900px; margin-bottom: 1.5rem; line-height: 1.1; }
+    .hero h1 span { background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+
+    .btn-primary { 
+        background: var(--emerald); color: white; padding: 1rem 2.5rem; border-radius: 50px; 
+        text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px;
+        transition: 0.3s; border: 1px solid var(--emerald-light);
+    }
+    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--emerald-glow); }
+
+    /* Mitra Section Enhancements */
+    .mitra { padding: var(--section-padding) 5%; background: var(--black-light); }
+    .mitra-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    
+    .mitra-visual { position: relative; }
+    .mitra-img { width: 100%; max-width: 350px; border-radius: 50%; border: 2px solid var(--gold); }
+    .chat-bubble {
+        position: absolute; bottom: 10%; right: -10%; background: white; color: var(--black);
+        padding: 1rem; border-radius: 20px 20px 0 20px; font-size: 0.9rem; font-weight: 500;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 200px; animation: pop 0.5s ease-out;
+    }
+    @keyframes pop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+    .mitra-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .mitra-tag { background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.2); padding: 0.6rem; border-radius: 10px; font-size: 0.85rem; text-align: center; }
+
+    .features-grid { 
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 2rem; max-width: 1200px; margin: 4rem auto 0; 
+    }
+    .card { 
+        background: var(--black-lighter); padding: 3rem 2rem; border-radius: 24px; 
+        border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; 
+    }
+    .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+    .credibility { background: var(--cream); color: var(--black); text-align: center; padding: var(--section-padding) 5%; }
+    .credibility h2 span { background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    footer { padding: 4rem 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    @media (max-width: 768px) {
+      .mitra-grid { grid-template-columns: 1fr; text-align: center; }
+      .mitra-visual { margin-bottom: 3rem; }
+      .chat-bubble { right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="pattern-overlay"></div>
+
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo_for_Vibhut.png" alt="Vibhut">
+      <span>VIBHUT</span>
+    </a>
+    <a href="#download" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">GET THE APP</a>
+  </nav>
+
+  <section class="hero">
+    <img src="logo_for_Vibhut.png" alt="Vibhut Logo" class="hero-logo">
+    <h1>Carry Your <span>Traditions</span> Forward</h1>
+    <p style="color: var(--text-muted); max-width: 650px; margin-bottom: 2.5rem; font-size: 1.2rem;">
+      The sacred wisdom of Gita Press meets modern life. Timely festival reminders, authentic rituals, and storytelling for the next generation.
+    </p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+      <a href="#" class="btn-primary">Download for iOS</a>
+      <a href="#" class="btn-primary" style="background: transparent; border-color: var(--gold); color: var(--gold);">Android App</a>
+    </div>
+  </section>
+
+  <section class="mitra">
+    <div class="mitra-grid">
+      <div class="mitra-visual">
+        <img src="Mitra.png" alt="Mitra AI" class="mitra-img">
+        <div class="chat-bubble">
+          "Mitra, why do we light 108 lamps for Deepavali?"
+        </div>
+      </div>
+      <div>
+        <h2 style="font-family: var(--font-display); font-size: 3rem; margin-bottom: 1rem;">Meet <span>Mitra</span></h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Your AI festival guide. Mitra knows the deep significance behind every ritual, helping you answer your children's questions with authentic clarity.
+        </p>
+        <div class="mitra-features">
+          <div class="mitra-tag">🪔 Step-by-Step Puja</div>
+          <div class="mitra-tag">📖 Children's Stories</div>
+          <div class="mitra-tag">🕉️ Mantra Meanings</div>
+          <div class="mitra-tag">📅 Precise Tithis</div>
+          <div class="mitra-tag">🎨 Tradition Ideas</div>
+          <div class="mitra-tag">❓ Ask Anything</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: var(--section-padding) 5%;">
+    <div style="text-align: center;">
+        <h2 style="font-family: var(--font-display); font-size: 3rem;">Everything for your <span>Sanskriti</span></h2>
+    </div>
+    <div class="features-grid">
+        <div class="card">
+            <span class="card-icon">🔔</span>
+            <h3>Timely Alerts</h3>
+            <p style="color: var(--text-muted);">Get reminders 3 days before a festival so you're never caught unprepared.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">📖</span>
+            <h3>Authentic Stories</h3>
+            <p style="color: var(--text-muted);">Beautifully narrated stories from Puranas, perfect for bedtime or family time.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🙏</span>
+            <h3>Guided Rituals</h3>
+            <p style="color: var(--text-muted);">Simple puja vidhis with audio assistance to help you perform rituals at home.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🛒</span>
+            <h3>Smart Lists</h3>
+            <p style="color: var(--text-muted);">Automatic shopping lists for Samagri, so you know exactly what to buy.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">📅</span>
+            <h3>Personal Calendar</h3>
+            <p style="color: var(--text-muted);">Sync festivals with your phone calendar based on your specific location.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🤝</span>
+            <h3>Community</h3>
+            <p style="color: var(--text-muted);">Connect with other families celebrating the same traditions worldwide.</p>
+        </div>
+    </div>
+  </section>
+
+  <section class="credibility">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--emerald); font-size: 0.8rem; margin-bottom: 1rem;">The Gold Standard of Wisdom</p>
+        <h2 style="font-family: var(--font-display); font-size: 3rem; margin-bottom: 1.5rem;">Powered by <span>Gita Press</span></h2>
+        <p style="font-size: 1.2rem; color: #444; margin-bottom: 2rem;">
+            Vibhut digitizes the legendary wisdom of Gita Press, Gorakhpur. Since 1923, they have been the most trusted source of Hindu texts. Now, that same authenticity is available at your fingertips.
+        </p>
+        <div style="font-family: var(--font-display); font-weight: 700; color: var(--emerald); font-size: 1.5rem;">
+            गीता प्रेस, गोरखपुर • Since 1923
+        </div>
+    </div>
+  </section>
+
+  <footer id="download">
+    <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Start a new <span>Tradition</span></h2>
+    <p style="color: var(--text-muted); margin-bottom: 2rem;">Join thousands of families keeping their culture alive.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem;">
+        <a href="#" class="btn-primary">App Store</a>
+        <a href="#" class="btn-primary">Play Store</a>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-muted);">© 2026 Vibhut. Designed for the global Hindu family. 🪔</p>
+  </footer>
+</body>
+</html>

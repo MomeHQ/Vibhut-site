@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibhut — Carry Your Traditions Forward</title>
+  <meta name="description" content="Festivals as your grandmother taught them — made for the way you live now.">
+  <meta name="theme-color" content="#0A1F14">
+
+  <meta property="og:title" content="Vibhut — Carry Your Traditions Forward">
+  <meta property="og:description" content="Festivals as your grandmother taught them. Made for the way you live now.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vibhut.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --emerald-deepest: #061812;
+      --emerald-deep:    #0A2418;
+      --emerald:         #0F3A26;
+      --emerald-mid:     #1B5E3C;
+      --black:           #0A0A0A;
+      --gold:            #C9A227;
+      --gold-bright:     #E8C547;
+      --gold-warm:       #D4AF37;
+      --marigold:        #E89A2C;
+      --marigold-deep:   #C4791E;
+      --cream:           #F5EFDF;
+      --cream-warm:      #FBF5E6;
+      --parchment:       #ECE3CE;
+      --text-primary:    #F5EFDF;
+      --text-soft:       rgba(245, 239, 223, 0.82);
+      --text-muted:      rgba(245, 239, 223, 0.55);
+      --text-faint:      rgba(245, 239, 223, 0.35);
+      --gradient-gold:    linear-gradient(135deg, #C9A227 0%, #E8C547 50%, #C9A227 100%);
+      --gradient-marigold:linear-gradient(135deg, #E89A2C 0%, #E8C547 100%);
+      --font-display:     'Cormorant Garamond', Georgia, serif;
+      --font-body:        'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bouncy:           cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      background:
+        radial-gradient(ellipse 1400px 900px at 50% 0%, rgba(15, 58, 38, 0.95) 0%, transparent 60%),
+        radial-gradient(ellipse 1200px 700px at 50% 50%, rgba(15, 58, 38, 0.4) 0%, transparent 70%),
+        var(--emerald-deepest);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      background-image:
+        radial-gradient(1px 1px at 23% 31%, rgba(201, 162, 39, 0.18) 0, transparent 50%),
+        radial-gradient(1px 1px at 67% 89%, rgba(201, 162, 39, 0.14) 0, transparent 50%),
+        radial-gradient(2px 2px at 88% 14%, rgba(201, 162, 39, 0.20) 0, transparent 50%);
+      background-size: 100% 100%;
+    }
+
+    /* ================================================================
+       Drifting marigold petals — festive ambience
+       ================================================================ */
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      width: 16px; height: 16px;
+      opacity: 0;
+    }
+    .petal svg { width: 100%; height: 100%; }
+    .petal:nth-child(1) { top: -5%; left: 8%;  animation: petal-fall-1 22s linear infinite, petal-spin 6s ease-in-out infinite; }
+    .petal:nth-child(2) { top: -5%; left: 22%; animation: petal-fall-2 28s linear infinite 3s, petal-spin 8s ease-in-out infinite 1s; }
+    .petal:nth-child(3) { top: -5%; left: 36%; animation: petal-fall-1 26s linear infinite 6s, petal-spin 7s ease-in-out infinite 2s; }
+    .petal:nth-child(4) { top: -5%; left: 55%; animation: petal-fall-2 30s linear infinite 9s, petal-spin 9s ease-in-out infinite 0.5s; }
+    .petal:nth-child(5) { top: -5%; left: 70%; animation: petal-fall-1 24s linear infinite 12s, petal-spin 6s ease-in-out infinite 1.5s; }
+    .petal:nth-child(6) { top: -5%; left: 85%; animation: petal-fall-2 26s linear infinite 15s, petal-spin 8s ease-in-out infinite 2.5s; }
+    .petal:nth-child(7) { top: -5%; left: 45%; animation: petal-fall-1 28s linear infinite 18s, petal-spin 7s ease-in-out infinite 1s; }
+    .petal:nth-child(8) { top: -5%; left: 92%; animation: petal-fall-2 32s linear infinite 21s, petal-spin 9s ease-in-out infinite 3s; }
+    @keyframes petal-fall-1 {
+      0%   { transform: translate(0, 0); opacity: 0; }
+      8%   { opacity: 0.7; }
+      90%  { opacity: 0.7; }
+      100% { transform: translate(140px, 110vh); opacity: 0; }
+    }
+    @keyframes petal-fall-2 {
+      0%   { transform: translate(0, 0); opacity: 0; }
+      8%   { opacity: 0.6; }
+      90%  { opacity: 0.6; }
+      100% { transform: translate(-160px, 110vh); opacity: 0; }
+    }
+    @keyframes petal-spin {
+      0%,100% { filter: hue-rotate(0deg); }
+      50%     { filter: hue-rotate(15deg) brightness(1.1); }
+    }
+
+    /* ================================================================
+       Sparkle fireflies — gold dots that twinkle in/out
+       ================================================================ */
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .sparkle {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold-bright);
+      box-shadow: 0 0 8px var(--gold-bright);
+      opacity: 0;
+    }
+    .sparkle:nth-child(1)  { top: 18%; left: 12%; animation: twinkle 4s ease-in-out infinite 0s; }
+    .sparkle:nth-child(2)  { top: 28%; left: 78%; animation: twinkle 5s ease-in-out infinite 1s; }
+    .sparkle:nth-child(3)  { top: 42%; left: 25%; animation: twinkle 6s ease-in-out infinite 2s; }
+    .sparkle:nth-child(4)  { top: 58%; left: 85%; animation: twinkle 4.5s ease-in-out infinite 0.5s; }
+    .sparkle:nth-child(5)  { top: 75%; left: 18%; animation: twinkle 5.5s ease-in-out infinite 2.5s; }
+    .sparkle:nth-child(6)  { top: 38%; left: 62%; animation: twinkle 4s ease-in-out infinite 1.8s; }
+    .sparkle:nth-child(7)  { top: 88%; left: 70%; animation: twinkle 5s ease-in-out infinite 3.2s; }
+    .sparkle:nth-child(8)  { top: 12%; left: 48%; animation: twinkle 6s ease-in-out infinite 0.8s; }
+    @keyframes twinkle {
+      0%,100% { opacity: 0; transform: scale(0.5); }
+      50%     { opacity: 0.9; transform: scale(1.3); }
+    }
+
+    /* ================================================================
+       Navigation
+       ================================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      padding: 18px clamp(20px, 5vw, 48px);
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(6, 24, 18, 0.6);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.08);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--cream);
+      font-family: var(--font-display); font-weight: 600; font-size: 22px;
+      letter-spacing: 0.18em;
+    }
+    .nav-mark {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.4), 0 4px 16px rgba(0, 0, 0, 0.4);
+      animation: mark-pulse 4s ease-in-out infinite;
+    }
+    @keyframes mark-pulse {
+      0%,100% { box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.4), 0 4px 16px rgba(0, 0, 0, 0.4); }
+      50%     { box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.7), 0 4px 24px rgba(201, 162, 39, 0.4); }
+    }
+    .nav-mark img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+    .nav-cta {
+      padding: 10px 22px;
+      border: 1px solid rgba(201, 162, 39, 0.5);
+      border-radius: 100px;
+      color: var(--gold-bright);
+      text-decoration: none;
+      font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      transition: all 350ms var(--bouncy);
+      background: rgba(201, 162, 39, 0.06);
+    }
+    .nav-cta:hover {
+      background: var(--gold); color: var(--emerald-deepest);
+      box-shadow: 0 6px 24px rgba(201, 162, 39, 0.5);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* ================================================================
+       Hero — animated diya garland behind, big bouncy logo entry
+       ================================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 120px 24px 80px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Animated diya garland strung across hero */
+    .garland {
+      position: absolute;
+      top: 90px;
+      left: 0; right: 0;
+      height: 80px;
+      pointer-events: none;
+      opacity: 0.85;
+      z-index: 1;
+    }
+    .garland svg { width: 100%; height: 100%; }
+
+    /* Big animated Mitra in upper corner with bouncy entry */
+    .floating-mitra {
+      position: absolute;
+      top: 16%;
+      left: 7%;
+      width: 96px;
+      height: 96px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      animation: mitra-bounce-in 1.4s 1.2s var(--bouncy) forwards;
+    }
+    .floating-mitra img {
+      width: 100%; height: 100%; object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 24px rgba(232, 197, 71, 0.6));
+      animation: float-bouncy 4s ease-in-out infinite 1.5s;
+    }
+    @keyframes mitra-bounce-in {
+      0%   { opacity: 0; transform: translateY(40px) scale(0.3) rotate(-30deg); }
+      60%  { transform: translateY(-15px) scale(1.15) rotate(8deg); }
+      100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    }
+    @keyframes float-bouncy {
+      0%,100% { transform: translateY(0) rotate(-2deg); }
+      50%     { transform: translateY(-15px) rotate(2deg); }
+    }
+
+    /* Mirror Mitra on the other side */
+    .floating-mitra.right {
+      left: auto;
+      right: 7%;
+      animation-delay: 1.5s;
+      transform: scaleX(-1);
+    }
+    .floating-mitra.right img {
+      animation: float-bouncy 4s ease-in-out infinite 1.8s reverse;
+    }
+
+    .logo-pendant {
+      width: 240px;
+      max-width: 65vw;
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow:
+        0 0 0 1px rgba(201, 162, 39, 0.5),
+        0 0 0 8px rgba(201, 162, 39, 0.08),
+        0 24px 60px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(201, 162, 39, 0.3);
+      margin-bottom: 56px;
+      position: relative;
+      animation: pendant-bounce 1.4s var(--bouncy) both;
+    }
+    .logo-pendant::after {
+      content: '';
+      position: absolute; inset: 12px;
+      border: 1px solid rgba(201, 162, 39, 0.4);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+    .logo-pendant img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
+    }
+    @keyframes pendant-bounce {
+      0%   { opacity: 0; transform: translateY(60px) scale(0.7); }
+      60%  { transform: translateY(-10px) scale(1.05); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: var(--gold-bright);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: fade-up 1.2s 0.4s ease-out both;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      max-width: 14ch;
+      margin: 0 auto 28px;
+      animation: fade-up 1.2s 0.6s ease-out both;
+    }
+    h1 .gold-italic {
+      font-style: italic;
+      font-weight: 600;
+      background: var(--gradient-gold);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gold-shimmer 4s ease-in-out infinite;
+    }
+    @keyframes gold-shimmer {
+      0%,100% { background-position: 0% 50%; }
+      50%     { background-position: 100% 50%; }
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(19px, 2.2vw, 24px);
+      color: var(--text-soft);
+      max-width: 620px;
+      margin: 0 auto 48px;
+      line-height: 1.5;
+      animation: fade-up 1.2s 0.8s ease-out both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      animation: fade-up 1.2s 1s ease-out both;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 32px; border-radius: 100px;
+      font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      letter-spacing: 0.02em; text-decoration: none;
+      transition: all 300ms var(--bouncy);
+      cursor: pointer; border: 1px solid transparent;
+    }
+    .btn-gold {
+      background: var(--gradient-gold); color: var(--emerald-deepest);
+      box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
+    }
+    .btn-gold:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(201, 162, 39, 0.55);
+    }
+    .btn-outline {
+      background: transparent; color: var(--cream);
+      border-color: rgba(245, 239, 223, 0.25);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold-bright); color: var(--gold-bright);
+      transform: translateY(-2px);
+    }
+    .btn .arrow { transition: transform 250ms var(--bouncy); }
+    .btn:hover .arrow { transform: translateX(8px); }
+
+    .status-pill {
+      margin-top: 36px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 18px;
+      background: rgba(46, 139, 87, 0.15);
+      border: 1px solid rgba(46, 139, 87, 0.3);
+      border-radius: 100px;
+      font-size: 13px; color: var(--text-soft);
+      animation: fade-up 1.2s 1.2s ease-out both;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #6BBF8C;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(107, 191, 140, 0.7); }
+      50%     { box-shadow: 0 0 0 14px rgba(107, 191, 140, 0); }
+    }
+
+    /* ================================================================
+       Section base
+       ================================================================ */
+    section { position: relative; z-index: 2; padding: clamp(80px, 12vw, 140px) 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .container-narrow { max-width: 780px; margin: 0 auto; }
+
+    /* Reveal-on-scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px) scale(0.98);
+      transition: opacity 0.9s var(--bouncy), transform 0.9s var(--bouncy);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(36px, 5.5vw, 60px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    h2 .italic { font-style: italic; color: var(--gold-bright); font-weight: 600; }
+
+    .section-lede {
+      font-family: var(--font-display);
+      font-size: clamp(19px, 2vw, 22px);
+      color: var(--text-soft);
+      line-height: 1.55;
+      margin-bottom: 56px;
+    }
+
+    /* ================================================================
+       Pain
+       ================================================================ */
+    .pain { position: relative; }
+    .pain::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+    }
+
+    .vignette-card {
+      max-width: 760px; margin: 0 auto 48px;
+      padding: clamp(40px, 6vw, 64px);
+      background: linear-gradient(135deg, rgba(15, 58, 38, 0.5) 0%, rgba(10, 36, 24, 0.7) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 400ms var(--bouncy);
+    }
+    .vignette-card::before {
+      content: '"';
+      position: absolute; top: -30px; left: 24px;
+      font-family: var(--font-display);
+      font-size: 200px;
+      color: rgba(201, 162, 39, 0.15);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .vignette-card:hover {
+      border-color: rgba(201, 162, 39, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .vignette-spoken {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.4;
+      color: var(--gold-bright);
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+    .vignette-narration {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.6;
+      color: var(--text-soft);
+      position: relative; z-index: 1;
+    }
+
+    .pain-promise { text-align: center; max-width: 720px; margin: 64px auto 0; }
+    .pain-promise h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--cream);
+    }
+    .pain-promise h3 .italic {
+      font-style: italic;
+      background: var(--gradient-gold);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gold-shimmer 4s ease-in-out infinite 1s;
+    }
+
+    /* ================================================================
+       Moments
+       ================================================================ */
+    .moments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .moment {
+      padding: 36px 32px;
+      background: rgba(15, 58, 38, 0.45);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: 20px;
+      transition: all 350ms var(--bouncy);
+      position: relative;
+    }
+    .moment:hover {
+      border-color: rgba(201, 162, 39, 0.6);
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(15, 58, 38, 0.65);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .moment-num {
+      font-family: var(--font-display);
+      font-style: italic; font-size: 14px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .moment h4 {
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 26px;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .moment p {
+      font-family: var(--font-body); font-size: 15px;
+      color: var(--text-soft); line-height: 1.6;
+    }
+
+    /* ================================================================
+       Mitra — bouncier portrait, livelier chat
+       ================================================================ */
+    .mitra-section { position: relative; }
+    .mitra-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+    }
+
+    .mitra-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .mitra-visual { position: relative; max-width: 380px; margin: 0 auto; }
+
+    .mitra-portrait {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--cream-warm) 0%, var(--parchment) 100%);
+      padding: 18px;
+      box-shadow:
+        0 0 0 2px rgba(201, 162, 39, 0.5),
+        0 0 0 12px rgba(201, 162, 39, 0.1),
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(201, 162, 39, 0.3);
+      position: relative;
+      animation: portrait-wobble 6s ease-in-out infinite;
+    }
+    @keyframes portrait-wobble {
+      0%,100% { transform: rotate(-2deg) scale(1); }
+      50%     { transform: rotate(2deg) scale(1.03); }
+    }
+    .mitra-portrait img {
+      width: 100%; height: 100%; object-fit: contain;
+      border-radius: 50%; display: block;
+    }
+
+    /* Animated golden ring around mitra */
+    .mitra-ring {
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .mitra-ring svg {
+      width: 100%; height: 100%;
+      animation: ring-rotate 24s linear infinite;
+    }
+    .mitra-ring circle {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1;
+      stroke-dasharray: 4 6;
+    }
+    @keyframes ring-rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Sparkles around mitra */
+    .mitra-sparkle {
+      position: absolute;
+      width: 12px; height: 12px;
+      pointer-events: none;
+    }
+    .mitra-sparkle svg { width: 100%; height: 100%; }
+    .mitra-sparkle:nth-child(3) { top: -10%; right: 10%; animation: spark-twinkle 3s ease-in-out infinite; }
+    .mitra-sparkle:nth-child(4) { bottom: 15%; left: -10%; animation: spark-twinkle 3s ease-in-out infinite 1s; }
+    .mitra-sparkle:nth-child(5) { top: 30%; right: -10%; animation: spark-twinkle 3s ease-in-out infinite 2s; }
+    @keyframes spark-twinkle {
+      0%,100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+      50%     { opacity: 1; transform: scale(1.2) rotate(180deg); }
+    }
+
+    .chat-bubble {
+      position: absolute;
+      bottom: 8%;
+      right: -8%;
+      max-width: 240px;
+      padding: 16px 20px;
+      background: var(--cream);
+      color: var(--emerald-deepest);
+      border-radius: 22px 22px 6px 22px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.4;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      animation: bubble-bounce 1s 2s var(--bouncy) both;
+    }
+    @keyframes bubble-bounce {
+      0%   { opacity: 0; transform: scale(0.3) translateY(20px); }
+      60%  { transform: scale(1.1) translateY(-5px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .chat-bubble::before {
+      content: '';
+      position: absolute; bottom: -1px; right: -8px;
+      width: 24px; height: 24px;
+      background: var(--cream);
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+
+    .mitra-tags {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .mitra-tag {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px;
+      background: rgba(201, 162, 39, 0.08);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text-soft);
+      transition: all 300ms var(--bouncy);
+    }
+    .mitra-tag:hover {
+      background: rgba(201, 162, 39, 0.18);
+      border-color: rgba(201, 162, 39, 0.5);
+      color: var(--cream);
+      transform: translateX(6px) scale(1.03);
+    }
+    .mitra-tag-icon { font-size: 18px; }
+
+    @media (max-width: 768px) {
+      .mitra-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .mitra-tags { text-align: left; }
+      .chat-bubble { right: 0; bottom: -10%; }
+    }
+
+    /* ================================================================
+       Features
+       ================================================================ */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .feature {
+      padding: 36px 28px;
+      background: linear-gradient(135deg, rgba(15, 58, 38, 0.5) 0%, rgba(10, 36, 24, 0.7) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.18);
+      border-radius: 20px;
+      transition: all 350ms var(--bouncy);
+    }
+    .feature:hover {
+      border-color: rgba(201, 162, 39, 0.55);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(201, 162, 39, 0.15);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      transition: transform 350ms var(--bouncy);
+    }
+    .feature:hover .feature-icon {
+      transform: rotate(-12deg) scale(1.15);
+    }
+    .feature h4 {
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 24px;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .feature p {
+      font-family: var(--font-body); font-size: 15px;
+      color: var(--text-soft); line-height: 1.55;
+    }
+
+    /* ================================================================
+       Heritage with rotating rangoli
+       ================================================================ */
+    .heritage {
+      text-align: center;
+      padding: clamp(100px, 14vw, 140px) 24px;
+      border-top: 1px solid rgba(201, 162, 39, 0.1);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .rangoli {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; max-width: 100vw;
+      height: 700px; max-height: 100vw;
+      pointer-events: none;
+      opacity: 0.1;
+    }
+    .rangoli svg {
+      width: 100%; height: 100%;
+      animation: rangoli-rotate 80s linear infinite;
+    }
+    .rangoli path,
+    .rangoli circle,
+    .rangoli line {
+      stroke: var(--gold);
+      stroke-width: 1;
+      fill: none;
+    }
+    @keyframes rangoli-rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .heritage-eyebrow {
+      font-family: var(--font-body);
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+    .heritage-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.5;
+      color: var(--text-soft);
+      max-width: 720px;
+      margin: 0 auto 14px;
+      position: relative; z-index: 1;
+    }
+    .heritage-source {
+      font-family: var(--font-display);
+      font-size: 17px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      position: relative; z-index: 1;
+    }
+
+    /* ================================================================
+       Signup
+       ================================================================ */
+    .signup { text-align: center; }
+    .signup-card {
+      max-width: 580px;
+      margin: 48px auto 0;
+      padding: clamp(40px, 6vw, 56px);
+      background: linear-gradient(135deg, rgba(15, 58, 38, 0.7) 0%, rgba(10, 36, 24, 0.9) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 28px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(245, 239, 223, 0.05);
+    }
+    .signup-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 50%; transform: translateX(-50%);
+      width: 60%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .signup-card h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 36px);
+      color: var(--cream);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .signup-card h3 .italic { font-style: italic; color: var(--gold-bright); }
+    .signup-card p {
+      font-family: var(--font-body);
+      font-size: 15px; color: var(--text-soft);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+
+    /* ================================================================
+       Footer with diya line + rangoli accent
+       ================================================================ */
+    footer {
+      padding: 56px 24px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(201, 162, 39, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+    .diya-line {
+      display: flex; justify-content: center; gap: 28px;
+      margin-bottom: 32px;
+    }
+    .diya-line svg { width: 32px; height: 32px; }
+    .diya-line .flame { transform-origin: bottom center; }
+    .diya-line svg:nth-child(1) .flame { animation: flame-flicker-bouncy 1.8s ease-in-out infinite; }
+    .diya-line svg:nth-child(2) .flame { animation: flame-flicker-bouncy 2s ease-in-out infinite 0.3s; }
+    .diya-line svg:nth-child(3) .flame { animation: flame-flicker-bouncy 1.6s ease-in-out infinite 0.6s; }
+    .diya-line svg:nth-child(4) .flame { animation: flame-flicker-bouncy 2.2s ease-in-out infinite 0.9s; }
+    .diya-line svg:nth-child(5) .flame { animation: flame-flicker-bouncy 1.9s ease-in-out infinite 0.2s; }
+    @keyframes flame-flicker-bouncy {
+      0%,100% { transform: scaleY(1) translateX(0); }
+      20%     { transform: scaleY(1.12) translateX(0.7px); }
+      40%     { transform: scaleY(0.92) translateX(-0.7px); }
+      60%     { transform: scaleY(1.15) translateX(0.4px); }
+      80%     { transform: scaleY(0.95) translateX(-0.3px); }
+    }
+
+    footer .footer-mark {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--cream);
+      margin: 0 auto 24px;
+      padding: 6px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.4), 0 4px 16px rgba(0, 0, 0, 0.4);
+      animation: mark-pulse 4s ease-in-out infinite;
+    }
+    footer .footer-mark img {
+      width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+    }
+    footer .links {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 28px; margin-bottom: 18px;
+    }
+    footer a {
+      color: var(--text-soft); text-decoration: none;
+      font-size: 14px; transition: color 300ms ease;
+    }
+    footer a:hover { color: var(--gold-bright); }
+    footer .copy {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--text-faint);
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-brand { font-size: 18px; gap: 10px; }
+      .nav-mark { width: 32px; height: 32px; }
+      .nav-cta { padding: 8px 16px; font-size: 11px; }
+      .hero { padding: 100px 20px 60px; }
+      .floating-mitra { width: 64px; height: 64px; top: 10%; left: 5%; }
+      .floating-mitra.right { right: 5%; }
+      .logo-pendant { width: 200px; margin-bottom: 36px; }
+      h1 { font-size: 44px; }
+      .vignette-card::before { font-size: 140px; top: -20px; }
+      .moments, .features { gap: 20px; }
+      .moment, .feature { padding: 28px 24px; }
+      .garland { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .petals, .sparkles { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Drifting marigold petals -->
+  <div class="petals" aria-hidden="true">
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+    <div class="petal"><svg viewBox="0 0 16 16"><path d="M 8 1 Q 12 4 14 8 Q 12 12 8 15 Q 4 12 2 8 Q 4 4 8 1 Z" fill="#E89A2C" opacity="0.8"/><circle cx="8" cy="8" r="2" fill="#C4791E"/></svg></div>
+  </div>
+
+  <!-- Sparkle fireflies -->
+  <div class="sparkles" aria-hidden="true">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+  </div>
+
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="nav-mark"><img src="assets/logo.png" alt=""></span>
+      <span>VIBHUT</span>
+    </a>
+    <a href="#signup" class="nav-cta">Notify me</a>
+  </nav>
+
+  <!-- ============================================================
+       Hero
+       ============================================================ -->
+  <header class="hero">
+    <!-- Garland of small lanterns hanging across hero -->
+    <svg class="garland" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+      <!-- String -->
+      <path d="M 0 10 Q 200 50 400 30 Q 600 10 800 30 Q 1000 50 1200 10" stroke="rgba(201, 162, 39, 0.4)" stroke-width="1" fill="none"/>
+      <!-- Lanterns -->
+      <g>
+        <circle cx="100" cy="35" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="100" cy="35" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="100" y1="29" x2="100" y2="22" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+      <g>
+        <circle cx="280" cy="42" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="280" cy="42" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="280" y1="36" x2="280" y2="29" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+      <g>
+        <circle cx="460" cy="28" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="460" cy="28" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="460" y1="22" x2="460" y2="15" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+      <g>
+        <circle cx="640" cy="22" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="640" cy="22" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="640" y1="16" x2="640" y2="9" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+      <g>
+        <circle cx="820" cy="30" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="820" cy="30" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="820" y1="24" x2="820" y2="17" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+      <g>
+        <circle cx="1000" cy="42" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="1000" cy="42" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="1000" y1="36" x2="1000" y2="29" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+      <g>
+        <circle cx="1130" cy="22" r="6" fill="#E89A2C" opacity="0.7"/>
+        <circle cx="1130" cy="22" r="3" fill="#FFD700" opacity="0.9"/>
+        <line x1="1130" y1="16" x2="1130" y2="9" stroke="rgba(201, 162, 39, 0.5)" stroke-width="0.5"/>
+      </g>
+    </svg>
+
+    <!-- Floating Mitras on both sides -->
+    <div class="floating-mitra"><img src="assets/mitra.png" alt=""></div>
+    <div class="floating-mitra right"><img src="assets/mitra.png" alt=""></div>
+
+    <div class="logo-pendant">
+      <img src="assets/logo.png" alt="Vibhut">
+    </div>
+
+    <p class="hero-eyebrow">For diaspora families</p>
+    <h1>Carry Your <span class="gold-italic">Traditions</span> Forward</h1>
+    <p class="hero-sub">
+      The sacred wisdom your grandparents lived by, woven into the rhythm of modern life. Festival reminders, authentic rituals, and storytelling for the next generation.
+    </p>
+    <div class="hero-actions">
+      <a href="#signup" class="btn btn-gold">
+        <span>Join the launch list</span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="#mitra" class="btn btn-outline">Meet Mitra</a>
+    </div>
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      <span>Coming May 2026 · iOS &amp; Android</span>
+    </div>
+  </header>
+
+  <!-- Pain -->
+  <section class="pain">
+    <div class="container-narrow">
+      <span class="eyebrow reveal">The thing you don't talk about</span>
+      <h2 class="reveal reveal-delay-1">Your <span class="italic">mom</span> always remembers.</h2>
+
+      <article class="vignette-card reveal reveal-delay-2">
+        <p class="vignette-spoken">
+          "Beta, light a diya tonight. It's Pradosh."
+        </p>
+        <p class="vignette-narration">
+          My mom always remembers. Always. And I'm always the one playing catch-up &mdash; opening the calendar after she calls, googling what to do, hoping I get it right before bedtime.
+        </p>
+      </article>
+
+      <div class="pain-promise reveal reveal-delay-3">
+        <h3>
+          Festivals as your grandmother taught them.<br>
+          <span class="italic">Made for the way you live now.</span>
+        </h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Moments -->
+  <section>
+    <div class="container">
+      <span class="eyebrow reveal">How it changes things</span>
+      <h2 class="reveal reveal-delay-1">From <span class="italic">scrambling</span> to ready.</h2>
+      <p class="section-lede reveal reveal-delay-2">
+        No more 9pm searches. No more "I'll do it properly next year." Vibhut quietly hands you what you need, when you need it.
+      </p>
+
+      <div class="moments">
+        <div class="moment reveal">
+          <p class="moment-num">— I —</p>
+          <h4>The morning of</h4>
+          <p>You wake up to a gentle nudge: today is Krishna Janmashtami. Here's a 2-minute story for the kids, the puja steps, what to make for prasad.</p>
+        </div>
+        <div class="moment reveal reveal-delay-1">
+          <p class="moment-num">— II —</p>
+          <h4>The bedtime question</h4>
+          <p>"Why do we celebrate Diwali?" You hand them a Bal-Niti story and snuggle in. They drift off knowing why &mdash; and so do you.</p>
+        </div>
+        <div class="moment reveal reveal-delay-2">
+          <p class="moment-num">— III —</p>
+          <h4>The phone call</h4>
+          <p>Mom calls about Karwa Chauth. You already lit the diya. Already know the moonrise time. The roles have shifted &mdash; gently, but they have.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mitra -->
+  <section class="mitra-section" id="mitra">
+    <div class="container">
+      <div class="mitra-grid">
+        <div class="mitra-visual reveal">
+          <div class="mitra-ring">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="49"/>
+            </svg>
+          </div>
+          <div class="mitra-portrait">
+            <img src="assets/mitra.png" alt="Mitra, the AI festival companion">
+          </div>
+          <div class="mitra-sparkle"><svg viewBox="0 0 12 12"><path d="M 6 0 L 7 5 L 12 6 L 7 7 L 6 12 L 5 7 L 0 6 L 5 5 Z" fill="#E8C547"/></svg></div>
+          <div class="mitra-sparkle"><svg viewBox="0 0 12 12"><path d="M 6 0 L 7 5 L 12 6 L 7 7 L 6 12 L 5 7 L 0 6 L 5 5 Z" fill="#E8C547"/></svg></div>
+          <div class="mitra-sparkle"><svg viewBox="0 0 12 12"><path d="M 6 0 L 7 5 L 12 6 L 7 7 L 6 12 L 5 7 L 0 6 L 5 5 Z" fill="#E8C547"/></svg></div>
+          <div class="chat-bubble">
+            "Mitra, why do we light a diya?"
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <span class="eyebrow">Meet your AI guide</span>
+          <h2>Mitra answers the <span class="italic">whys</span>.</h2>
+          <p class="section-lede" style="margin-bottom: 8px;">
+            The patient relative your kids never got to grow up with. Mitra knows the stories, the meanings, the history &mdash; and explains them in language a four-year-old understands.
+          </p>
+
+          <div class="mitra-tags">
+            <div class="mitra-tag"><span class="mitra-tag-icon">🪔</span><span>Step-by-step puja</span></div>
+            <div class="mitra-tag"><span class="mitra-tag-icon">📖</span><span>Kid-friendly stories</span></div>
+            <div class="mitra-tag"><span class="mitra-tag-icon">🕉️</span><span>Mantra meanings</span></div>
+            <div class="mitra-tag"><span class="mitra-tag-icon">📅</span><span>Precise tithis</span></div>
+            <div class="mitra-tag"><span class="mitra-tag-icon">🎨</span><span>Tradition ideas</span></div>
+            <div class="mitra-tag"><span class="mitra-tag-icon">❓</span><span>Ask anything</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <div class="container">
+      <span class="eyebrow reveal">In the app</span>
+      <h2 class="reveal reveal-delay-1">Everything for your <span class="italic">sanskriti</span>.</h2>
+
+      <div class="features">
+        <div class="feature reveal">
+          <div class="feature-icon">🔔</div>
+          <h4>Timely alerts</h4>
+          <p>Reminders three days before each festival, so you're never caught off-guard.</p>
+        </div>
+        <div class="feature reveal reveal-delay-1">
+          <div class="feature-icon">📖</div>
+          <h4>Authentic stories</h4>
+          <p>Beautifully narrated tales from the Puranas, perfect for bedtime or family time.</p>
+        </div>
+        <div class="feature reveal reveal-delay-2">
+          <div class="feature-icon">🙏</div>
+          <h4>Guided rituals</h4>
+          <p>Simple puja vidhis with audio assistance, designed for at-home celebration.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon">🛒</div>
+          <h4>Smart lists</h4>
+          <p>Automatic shopping lists for samagri, so you know exactly what to buy.</p>
+        </div>
+        <div class="feature reveal reveal-delay-1">
+          <div class="feature-icon">📅</div>
+          <h4>Personal calendar</h4>
+          <p>Festivals tuned to your specific location, synced with your phone calendar.</p>
+        </div>
+        <div class="feature reveal reveal-delay-2">
+          <div class="feature-icon">🤝</div>
+          <h4>Community</h4>
+          <p>Connect with other families celebrating the same traditions, around the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage with rangoli -->
+  <section class="heritage">
+    <div class="rangoli">
+      <svg viewBox="0 0 700 700" aria-hidden="true">
+        <g transform="translate(350, 350)">
+          <!-- Outer + inner concentric -->
+          <circle r="40"/>
+          <circle r="80"/>
+          <circle r="130"/>
+          <circle r="180"/>
+          <circle r="240"/>
+          <circle r="300"/>
+          <!-- Lotus petals at multiple radii -->
+          <g>
+            <path d="M 0 -130 Q 25 -180 0 -240 Q -25 -180 0 -130 Z"/>
+            <path d="M 0 130 Q 25 180 0 240 Q -25 180 0 130 Z"/>
+            <path d="M -130 0 Q -180 25 -240 0 Q -180 -25 -130 0 Z"/>
+            <path d="M 130 0 Q 180 25 240 0 Q 180 -25 130 0 Z"/>
+            <path d="M 92 -92 Q 130 -130 175 -175 Q 130 -100 92 -92 Z"/>
+            <path d="M -92 -92 Q -130 -130 -175 -175 Q -100 -130 -92 -92 Z"/>
+            <path d="M 92 92 Q 130 130 175 175 Q 100 130 92 92 Z"/>
+            <path d="M -92 92 Q -130 130 -175 175 Q -130 100 -92 92 Z"/>
+          </g>
+          <!-- 16-fold spokes -->
+          <g>
+            <line x1="0" y1="-300" x2="0" y2="300"/>
+            <line x1="-300" y1="0" x2="300" y2="0"/>
+            <line x1="-212" y1="-212" x2="212" y2="212"/>
+            <line x1="212" y1="-212" x2="-212" y2="212"/>
+            <line x1="-115" y1="-277" x2="115" y2="277"/>
+            <line x1="115" y1="-277" x2="-115" y2="277"/>
+            <line x1="-277" y1="-115" x2="277" y2="115"/>
+            <line x1="277" y1="-115" x2="-277" y2="115"/>
+          </g>
+          <!-- Center dot -->
+          <circle r="6" fill="rgba(201, 162, 39, 0.5)" stroke="none"/>
+          <!-- Outer petal ring -->
+          <g>
+            <path d="M 0 -240 L 10 -260 L 0 -300 L -10 -260 Z"/>
+            <path d="M 0 240 L 10 260 L 0 300 L -10 260 Z"/>
+            <path d="M -240 0 L -260 -10 L -300 0 L -260 10 Z"/>
+            <path d="M 240 0 L 260 -10 L 300 0 L 260 10 Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <p class="heritage-eyebrow reveal">Drawing from a century of wisdom</p>
+    <p class="heritage-text reveal reveal-delay-1">
+      Our stories and rituals are guided by the trusted texts of Gita Press, Gorakhpur &mdash; the same source generations of Hindu families have turned to since 1923.
+    </p>
+    <p class="heritage-source reveal reveal-delay-2">गीता प्रेस, गोरखपुर</p>
+  </section>
+
+  <!-- Signup -->
+  <section class="signup" id="signup">
+    <div class="container-narrow">
+      <span class="eyebrow reveal">Coming soon</span>
+      <h2 class="reveal reveal-delay-1">Start a new <span class="italic">tradition</span>.</h2>
+      <p class="section-lede reveal reveal-delay-2">
+        We're building Vibhut for families like yours. Be the first to know when it launches.
+      </p>
+
+      <div class="signup-card reveal reveal-delay-3">
+        <h3>Be there from <span class="italic">day one</span>.</h3>
+        <p>Drop us a line. We'll send a quiet note when Vibhut opens its doors &mdash; no spam, no hard sell.</p>
+        <a href="mailto:hello@momehq.com?subject=Vibhut%20launch%20list&amp;body=Hi%20Vibhut%20team%20%E2%80%94%20I%E2%80%99d%20love%20to%20hear%20when%20you%20launch." class="btn btn-gold">
+          <span>Let me know when it's live</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with diyas -->
+  <footer>
+    <div class="diya-line">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="16" cy="23" rx="13" ry="3.5" fill="#9C5A1F"/>
+        <path d="M 3 23 Q 16 32 29 23 Z" fill="#C9A227"/>
+        <path class="flame" d="M 16 7 Q 12 15 16 19 Q 20 15 16 7 Z" fill="#E8C547"/>
+        <ellipse cx="16" cy="13" rx="2" ry="4" fill="#FFD700" class="flame"/>
+      </svg>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="16" cy="23" rx="13" ry="3.5" fill="#9C5A1F"/>
+        <path d="M 3 23 Q 16 32 29 23 Z" fill="#C9A227"/>
+        <path class="flame" d="M 16 7 Q 12 15 16 19 Q 20 15 16 7 Z" fill="#E8C547"/>
+        <ellipse cx="16" cy="13" rx="2" ry="4" fill="#FFD700" class="flame"/>
+      </svg>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="16" cy="23" rx="13" ry="3.5" fill="#9C5A1F"/>
+        <path d="M 3 23 Q 16 32 29 23 Z" fill="#C9A227"/>
+        <path class="flame" d="M 16 7 Q 12 15 16 19 Q 20 15 16 7 Z" fill="#E8C547"/>
+        <ellipse cx="16" cy="13" rx="2" ry="4" fill="#FFD700" class="flame"/>
+      </svg>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="16" cy="23" rx="13" ry="3.5" fill="#9C5A1F"/>
+        <path d="M 3 23 Q 16 32 29 23 Z" fill="#C9A227"/>
+        <path class="flame" d="M 16 7 Q 12 15 16 19 Q 20 15 16 7 Z" fill="#E8C547"/>
+        <ellipse cx="16" cy="13" rx="2" ry="4" fill="#FFD700" class="flame"/>
+      </svg>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="16" cy="23" rx="13" ry="3.5" fill="#9C5A1F"/>
+        <path d="M 3 23 Q 16 32 29 23 Z" fill="#C9A227"/>
+        <path class="flame" d="M 16 7 Q 12 15 16 19 Q 20 15 16 7 Z" fill="#E8C547"/>
+        <ellipse cx="16" cy="13" rx="2" ry="4" fill="#FFD700" class="flame"/>
+      </svg>
+    </div>
+    <div class="footer-mark">
+      <img src="assets/logo.png" alt="">
+    </div>
+    <div class="links">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="mailto:hello@momehq.com">hello@momehq.com</a>
+    </div>
+    <p class="copy">© 2026 MomeHQ · Vibhut is published by MomeHQ. Built with care for families bringing tradition home.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
